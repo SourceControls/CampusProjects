@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+
+        <link rel="apple-touch-icon" sizes="76x76" href="SinhVien/assets/img/ptit-logo.png" />
+        <link rel="icon" type="image/png" href="SinhVien/assets/img/ptit-logo.png" />
+        <title>Đăng nhập</title>
+        <!--     Fonts and icons     -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+        <!-- Nucleo Icons -->
+        <link href="SinhVien/assets/css/nucleo-icons.css" rel="stylesheet" />
+        <link href="SinhVien/assets/css/nucleo-svg.css" rel="stylesheet" />
+        <!-- Font Awesome Icons -->
+        <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+        <link href="SinhVien/assets/css/nucleo-svg.css" rel="stylesheet" />
+        <!-- CSS Files -->
+        <link id="pagestyle" href="SinhVien/assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
+    </head>
+
+    <body class="">
+        <main class="main-content mt-0">
+            <section>
+                <div class="page-header min-vh-100">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto">
+                                <div class="card card-plain">
+                                    <div class="card-header pb-0 text-start">
+                                        <h4 class="font-weight-bolder">Đăng nhập</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <form role="form">
+                                            <div class="mb-3">
+                                                <input
+                                                    class="form-control form-control-lg"
+                                                    placeholder="Tên đăng nhập"
+                                                    name="TENDN"
+                                                    required />
+                                            </div>
+                                            <div class="mb-3">
+                                                <input
+                                                    type="password"
+                                                    class="form-control form-control-lg"
+                                                    placeholder="Mật khẩu"
+                                                    aria-label="Password"
+                                                    name="MATKHAU"
+                                                    required />
+                                            </div>
+                                            <div class="text-center">
+                                                <button
+                                                    type="submit"
+                                                    class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">
+                                                    Đăng nhập
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 end-0 text-center justify-content-center flex-column">
+                                <div
+                                    class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center overflow-hidden"
+                                    style="
+                                        background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/signin-ill.jpg');
+                                        background-size: cover;
+                                    ">
+                                    <span class="mask bg-gradient-primary opacity-6"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <!--   Core JS Files   -->
+        <script src="SinhVien/assets/js/core/popper.min.js"></script>
+        <script src="SinhVien/assets/js/core/bootstrap.min.js"></script>
+        <script src="SinhVien/assets/js/plugins/perfect-scrollbar.min.js"></script>
+        <script src="SinhVien/assets/js/plugins/smooth-scrollbar.min.js"></script>
+        <script>
+            var win = navigator.platform.indexOf('Win') > -1;
+            if (win && document.querySelector('#sidenav-scrollbar')) {
+                var options = {
+                    damping: '0.5',
+                };
+                Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+            }
+            //lấy IP
+            // fetch(
+            //   'https://api.ipdata.co?api-key=644fe40916c80e9a4eb6efd684a7760e5b53f1047ab555e455a30538'
+            // )
+            //   .then(function (response) {
+            //     return response.json();
+            //   })
+            //   .then(function (data) {
+            //     alert(data.latitude);
+            //   });
+        </script>
+
+        <!-- <script>
+      //Thêm cái này ở đầu mỗi file
+      if (!window.localStorage.getItem('TENDN')) {
+        window.location.replace('../sign-in.html');
+      }
+    </script> -->
+        <script type="module" async>
+            import {server} from './components/server/main.js';
+            try {
+                const listTaiKhoan = await server.getList(server.tbl.TAIKHOAN, {});
+                console.log(listTaiKhoan);
+                if (listTaiKhoan.length == 0) {
+                    alert('Không thể kết nối tới server!');
+                }
+                var form = document.querySelector('form');
+                form.onsubmit = (e) => {
+                    e.preventDefault();
+                    const formData = new FormData(e.target);
+                    const formProps = Object.fromEntries(formData);
+                    let authSuccess = false;
+                    listTaiKhoan.forEach((e) => {
+                        if (e.TENDN == formProps.TENDN && e.MATKHAU == formProps.MATKHAU) {
+                            authSuccess = true;
+                            window.localStorage.setItem('TENDN', e.TENDN);
+                            window.localStorage.setItem('LOAITK', e.LOAITK);
+                            if (e.LOAITK == 'PDT') {
+                                window.location.replace('/Front-End/PhongDaoTao/index.html');
+                            }
+                            if (e.LOAITK == 'GV') {
+                                window.location.replace('/Front-End/GiangVien/index.html');
+                            }
+                            if (e.LOAITK == 'SV') {
+                                window.location.replace('/Front-End/SinhVien/index.html');
+                            }
+                        }
+                    });
+                    if (!authSuccess) {
+                        alert('Sai tên đăng nhập hoặc mật khẩu');
+                    }
+                };
+            } catch (e) {
+                alert(e.message);
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   		http://www.springframework.org/schema/beans/spring-beans.xsd
+	   		http://www.springframework.org/schema/context
+	   		http://www.springframework.org/schema/context/spring-context.xsd
+	   		http://www.springframework.org/schema/tx 
+			http://www.springframework.org/schema/tx/spring-tx.xsd
+			http://www.springframework.org/schema/mvc 
+			http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+ 	<bean id="TopWatch" class="ptit.bean.TopWatch">
+		<property name="mainTitle" value="Great Leather Collection"></property>
+		<property name="subTitle" value="The Stone Series"></property>
+		<property name="descript" value="It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."></property>
+		<property name="url" value=""></property>
+		<property name="img" value="//cdn.shopify.com/s/files/1/0039/3740/2989/files/Slider-3_57764d19-02cc-428d-9d38-e9c6295cc5b4.jpg?v=1559368786"></property>
+	</bean>
+	<bean id="topWatch1" class="ptit.bean.TopWatch">
+		<property name="mainTitle" value="Black Great Addition"></property>
+		<property name="subTitle" value="Nice Top Series"></property>
+		<property name="descript" value="It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."></property>
+		<property name="url" value=""></property>
+		<property name="img" value="//cdn.shopify.com/s/files/1/0039/3740/2989/files/Slider-2_f7becb67-5722-4f24-810d-d8ad5fa7483e.jpg?v=1559368812"></property>
+	</bean>
+	
+	<bean id = "uploadfile" class = "ptit.bean.UploadFile">
+		<property name="basePath" value = "C:\\Users\\hungb\\Downloads\\Documents\"></property>
+	</bean>
+	
+
+</beans>

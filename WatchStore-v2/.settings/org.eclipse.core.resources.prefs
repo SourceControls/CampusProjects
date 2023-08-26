@@ -1,0 +1,7 @@
+eclipse.preferences.version=1
+encoding//WebContent/WEB-INF/views/include/menu.jsp=UTF-8
+encoding//WebContent/WEB-INF/views/include/product.jsp=UTF-8
+encoding//WebContent/WEB-INF/views/product/product.jsp=UTF-8
+encoding//src/ptit/controller/LoginController.java=UTF-8
+encoding//src/ptit/controller/ProductDetailController.java=UTF-8
+encoding//src/ptit/controller/RegisterController.java=UTF-8
