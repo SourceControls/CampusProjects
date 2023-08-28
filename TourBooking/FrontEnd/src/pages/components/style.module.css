@@ -1,0 +1,171 @@
+.booked-tours-client {
+    max-height: 90%;
+    overflow-y: scroll;
+    padding-right: 12px;
+}
+
+.booked-tours-client .tour {
+    width: 100%;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    height: 200px;
+    margin-bottom: 12px;
+}
+
+.booked-tours-client .bg {
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(70%);
+    height: 100%;
+}
+
+
+.booked-tours-client .details-container {
+    width: max-content;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    max-width: 100%;
+    transform: translate(-50%, -50%);
+    color: var(--white);
+    background-color: var(--dark-opacity);
+    border: 1px solid var(--gold);
+    border-radius: 16px;
+    padding: 12px;
+}
+
+.booked-tours-client .heading {
+    margin-bottom: 16px;
+    margin-left: 18px;
+}
+
+.booked-tours-client .name {
+    font-size: x-large;
+    text-transform: capitalize;
+    margin-bottom: 8px;
+}
+
+
+.booked-tours-client button {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    z-index: 10;
+}
+
+.booked-tours-client .details-body {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.booked-tours-client .details-body .wrapper {
+    margin: 0px 18px;
+}
+
+.booked-tours-client .details-body img,
+.booked-tours-client .details-body p {
+    margin: 0;
+    margin-left: 6px;
+
+}
+
+.booked-tours-client .detail {
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.booked-tours-client .value {
+    margin-left: 12px;
+    text-align: right;
+    flex: 1;
+}
+
+.booked-tours-client .title {
+    border-bottom: 1px solid var(--purple-dark);
+    margin-bottom: 16px;
+    font-weight: bold;
+}
+
+.booked-tours-client img {
+    width: 18px;
+}
+
+/* cập nhật thông tin */
+
+.update-info {
+    width: 340px;
+    margin: 0 auto;
+}
+
+.update-info a {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.update-info img {
+    width: 220px;
+}
+
+.update-info label {
+    padding-left: 8px;
+    margin: 12px 0 4px;
+    color: var(--gold);
+}
+
+.update-info input,
+.update-info select {
+    width: 100%;
+    border-radius: 32px;
+    border: 2px solid var(--gold);
+    height: 40px;
+    padding: 4px 8px;
+    margin: 6px 6px 0 0;
+}
+
+
+
+
+.search-container {
+    position: relative;
+    margin-right: 24px;
+}
+
+.search-container img {
+    position: absolute;
+    left: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.search-container input {
+    width: 30vw;
+    min-width: 200px;
+}
+
+.search-input::-webkit-input-placeholder {
+    color: var(--purple-dark) !important;
+}
+
+.search-input {
+    box-shadow: inset 0px 0px 4px var(--purple-dark);
+    padding: 8px 12px 8px 32px;
+    border-radius: 6px;
+    background-color: var(--purple-light);
+    color: var(--purple-dark) !important;
+    border: none;
+}
+
+@media screen and (max-width: 1000px) {
+    .booked-tours-client .tour {
+        height: 300px;
+    }
+
+    .booked-tours-client .detail {
+        min-width: 300px;
+    }
+}
